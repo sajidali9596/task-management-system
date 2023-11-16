@@ -1,32 +1,44 @@
 import React from "react";
 import { Task } from "@/pages/index";
-interface Popps {
+import Button from "./Button";
+
+interface Props {
   task: Task;
   handleComplete: (id: string, completed: boolean) => void;
   handleDelete: () => void;
 }
 
-const TaskItem = ({ task, handleComplete, handleDelete }: Popps) => {
+const TaskItem: React.FC<Props> = ({ task, handleComplete, handleDelete }) => {
   return (
-    <li>
-      <strong>{task?.completed ? <span>✓ </span> : <span>✗ </span>}</strong>
-      <strong>{task?.title}</strong> - {task.description}
-      <button
-        className="mark-complete"
+    <tr className="bg-white p-4 rounded mb-4">
+      <td className="p-2">
+        <strong className={`text-${task?.completed ? "green" : "yellow"}-500`}>
+          {task?.completed ? "✓ " : "✗ "}
+        </strong>
+      </td>
+      <td className="p-2">
+        <strong>{task?.title}</strong>
+      </td>
+      <td className="p-2">{task.description}</td>
+      <Button
+        text="Mark Complete"
+        textColor="white"
+        color="green"
         onClick={() => handleComplete(task.id, true)}
-      >
-        Mark Complete
-      </button>
-      <button
-        className="mark-incomplete"
+      />
+      <Button
+        text="Mark Incomplete"
+        textColor="gray"
+        color="yellow"
         onClick={() => handleComplete(task.id, false)}
-      >
-        Mark Incomplete
-      </button>
-      <button className="delete" onClick={handleDelete}>
-        Delete
-      </button>
-    </li>
+      />
+      <Button
+        text="Delete"
+        textColor="white"
+        color="red"
+        onClick={handleDelete}
+      />
+    </tr>
   );
 };
 

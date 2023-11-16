@@ -60,11 +60,13 @@ export default function Home() {
     <div className="container bg-red">
       <h1>Task Manager</h1>
       <CreateTaskFrom addNewTask={addNewTask} />
-      <TaskList
-        tasks={filteredTasks}
-        handleComplete={handleComplete}
-        handleDelete={handleDelete}
-      />
+      <div className="overflow-x-auto">
+        <TaskList
+          tasks={filteredTasks}
+          handleComplete={handleComplete}
+          handleDelete={handleDelete}
+        />
+      </div>
     </div>
   );
 }
