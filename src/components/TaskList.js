@@ -1,11 +1,25 @@
+// TaskList.js
 import React from "react";
+import { motion } from "framer-motion";
 import TaskItem from "./TaskItem";
+import { useTaskContext } from "@/contexts/taskContext";
+import { useDragAndDropContext } from "@/contexts/dragAndDropContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const TaskList = ({ tasks, handleComplete, handleDelete }) => {
+const TaskList = () => {
+  const { handleComplete, handleDelete } = useTaskContext();
+  const { tasks } = useDragAndDropContext();
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Task List</h2>
-      <table className="min-w-full bg-white border border-gray-300">
+      <motion.table
+        className="min-w-full bg-white border border-gray-300"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
         <thead>
           <tr>
             <th className="p-4">Status</th>
@@ -34,7 +48,7 @@ const TaskList = ({ tasks, handleComplete, handleDelete }) => {
             ))
           )}
         </tbody>
-      </table>
+      </motion.table>
     </div>
   );
 };

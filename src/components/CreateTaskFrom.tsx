@@ -1,11 +1,11 @@
+import { useTaskContext } from "@/contexts/taskContext";
+import { NewTask } from "@/utils/interfaces";
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { NewTask } from "@/pages/index";
 
-interface TaskFormProps {
-  addNewTask: (newTask: NewTask) => void;
-}
+interface TaskFormProps {}
 
-const CreateTaskForm: React.FC<TaskFormProps> = ({ addNewTask }) => {
+const CreateTaskForm: React.FC<TaskFormProps> = () => {
+  const { addNewTask } = useTaskContext();
   const [task, setTask] = useState<NewTask>({
     title: "",
     description: "",
