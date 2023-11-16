@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans bg-gray-200 text-gray-700 m-0 p-0;
+}
+
+.container {
+  @apply max-w-2xl mx-auto p-4;
+}
+
+h1 {
+  @apply text-blue-500;
+}
+
+form {
+  @apply mb-4;
+}
+
+label {
+  @apply block mb-2;
+}
+
+input, textarea {
+  @apply w-full p-2 mb-4 box-border;
+}
+
+button {
+  @apply bg-blue-500 text-white p-2 rounded-none cursor-pointer;
+}
+
+button:hover {
+  @apply bg-blue-700;
+}
+
+ul {
+  @apply list-none p-0;
+}
+
+li {
+  @apply bg-white p-4 rounded mb-4 flex justify-between items-center;
+}
+
+.mark-complete {
+  @apply bg-green-500 text-white;
+}
+
+.mark-complete:hover {
+  @apply bg-green-700;
+}
+
+.mark-incomplete {
+  @apply bg-yellow-500 text-gray-700;
+}
+
+.mark-incomplete:hover {
+  @apply bg-yellow-700;
+}
+
+.delete {
+  @apply bg-red-500 text-white;
+}
+
+.delete:hover {
+  @apply bg-red-700;
+}
